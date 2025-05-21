@@ -51,12 +51,12 @@
         }
         
         .category-badge {
-            background-color: rgba(253, 186, 116, 0.2);
+            background-color: #e74c3c;
             transition: background-color 0.3s;
         }
         
         .news-card:hover .category-badge {
-            background-color: rgba(253, 186, 116, 0.3);
+            background-color: #c0392b;
         }
         
         /* Swiper custom styles */
@@ -118,106 +118,24 @@
         }
         
         #mobile-menu.show {
-            max-height: 1000px; /* Adjust based on content */
+            max-height: 1000px;
             transition: max-height 0.5s ease-in;
+        }
+        
+        /* Category chip styles */
+        .category-chip {
+            transition: all 0.3s ease;
+        }
+        
+        .category-chip:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px -1px rgba(239, 68, 68, 0.3);
         }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-800 font-sans leading-relaxed">
     <!-- Header -->
-    <header class="bg-white shadow-md sticky top-0 z-50">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-            <nav class="flex items-center justify-between h-16">
-                <!-- Logo -->
-                <div class="flex-shrink-0">
-                    <a href="/" class="text-2xl font-bold text-gray-600">
-                        News<span class="text-red-600">Portal</span>
-                    </a>
-                </div>
-
-                <!-- Desktop Navigation -->
-                <div class="hidden md:flex items-center space-x-1 lg:space-x-6">
-                    <!-- Navigation Links -->
-                    <div class="flex space-x-1 lg:space-x-6">
-                        @foreach (\App\Models\NewsCategory::all() as $category)
-                            <a href="{{ route('news.category', $category->slug) }}" class="px-3 py-2 rounded-md text-sm font-medium text-dark hover:text-accent transition-colors">
-                                {{ $category->title }}
-                            </a>
-                        @endforeach
-                    </div>
-                    
-                    <!-- Search dan Login -->
-                    <div class="hidden lg:flex items-center gap-2 mt-4 lg:mt-0 w-full lg:w-auto relative">
-                        <form action="{{ route('news.search') }}" method="GET" class="relative w-full lg:w-auto">
-                            <input type="text" name="query" placeholder="Cari berita..."
-                                class="border border-slate-300 rounded-full px-4 py-2 pl-8 w-full text-sm font-normal lg:w-auto focus:outline-none focus:ring-primary focus:border-primary"
-                                id="searchInput" required />
-                            <!-- Icon Search -->
-                            <span class="absolute inset-y-0 left-3 flex items-center text-slate-400">
-                                <img src="{{ asset('assets/img/search.png') }}" alt="search" class="w-4">
-                            </span>
-                        </form>
-                        <a href="{{ route('filament.admin.auth.login') }}"
-                            class="bg-red-600 hover:bg-red-700 px-8 py-2 rounded-full text-white font-semibold h-fit text-sm lg:text-base">
-                            Masuk
-                        </a>
-                    </div>
-                </div>
-                
-                <!-- Mobile menu button -->
-                <div class="md:hidden flex items-center gap-4">
-                    <button id="mobile-search-toggle" class="p-2 text-gray-700 hover:text-accent focus:outline-none">
-                        <i class="fas fa-search text-xl"></i>
-                    </button>
-                    
-                    <button 
-                        type="button" 
-                        class="p-2 rounded-md text-gray-700 hover:text-accent focus:outline-none"
-                        aria-controls="mobile-menu"
-                        aria-expanded="false"
-                        id="menu-toggle"
-                    >
-                        <span class="sr-only">Open main menu</span>
-                        <i class="fas fa-bars text-xl"></i>
-                    </button>
-                </div>
-            </nav>
-            
-            <!-- Mobile Navigation -->
-            <div class="md:hidden bg-white" id="mobile-menu">
-                <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                    @foreach (\App\Models\NewsCategory::all() as $category)
-                        <a href="{{ route('news.category', $category->slug) }}" class="block px-3 py-2 rounded-md text-base font-medium text-dark hover:bg-gray-100 hover:text-accent">
-                            {{ $category->title }}
-                        </a>
-                    @endforeach
-                    
-                    <div class="mt-4 px-3">
-                        <a href="{{ route('filament.admin.auth.login') }}"
-                            class="block w-full text-center bg-red-600 hover:bg-red-700 px-4 py-2 rounded-full text-white font-semibold">
-                            Masuk
-                        </a>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Mobile Search Bar -->
-            <div class="md:hidden hidden px-3 py-2 bg-white" id="mobile-search">
-                <form action="{{ route('news.search') }}" method="GET" class="relative">
-                    <input 
-                        type="text" 
-                        name="query"
-                        placeholder="Cari berita..." 
-                        class="block w-full pl-4 pr-10 py-2 border border-gray-300 rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent"
-                        required
-                    >
-                    <button type="submit" class="absolute right-3 top-2 text-gray-500 hover:text-accent">
-                        <i class="fas fa-search"></i>
-                    </button>
-                </form>
-            </div>
-        </div>
-    </header>
+    @include('partials.header')
 
     <!-- Hero Slider -->
     <section class="relative">
@@ -234,7 +152,7 @@
                             <div class="container mx-auto absolute bottom-0 left-0 right-0 p-8 z-10">
                                 <div class="hero-content max-w-2xl animate-fadeInUp">
                                     @if($banner->news->newsCategory)
-                                        <span class="category bg-accent px-4 py-1 rounded-full text-white text-sm font-semibold inline-block mb-4">
+                                        <span class="bg-red-600 px-4 py-1 rounded-full text-white text-sm font-semibold inline-block mb-4">
                                             {{ $banner->news->newsCategory->title }}
                                         </span>
                                     @endif
@@ -294,7 +212,7 @@
                                      class="w-full h-full object-cover transition-transform duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] group-hover:scale-[1.03]">
                                 <!-- Kategori Badge -->
                                 <div class="absolute top-3 left-3">
-                                    <span class="bg-white/90 text-red-600 text-xs font-medium px-3 py-1 rounded-full backdrop-blur-sm">
+                                    <span class="bg-red-600 text-white text-xs font-medium px-3 py-1 rounded-full">
                                         {{ $new->newsCategory->title }}
                                     </span>
                                 </div>
@@ -358,7 +276,7 @@
                             <img src="{{ asset('storage/' . $featured->thumbnail) }}" alt="{{ $featured->title }}" class="w-full h-full object-cover">
                         </div>
                         <div class="p-4">
-                            <span class="text-accent text-xs font-semibold">{{ $featured->newsCategory->title }}</span>
+                            <span class="text-white bg-red-600 px-2 py-1 rounded text-xs font-semibold">{{ $featured->newsCategory->title }}</span>
                             <h3 class="text-sm font-semibold mt-1 mb-2 leading-tight">{{ $featured->title }}</h3>
                             <div class="flex justify-between items-center text-xs text-gray-400">
                                 <span>{{ \Carbon\Carbon::parse($featured->created_at)->format('d M Y') }}</span>
@@ -386,9 +304,9 @@
             <div class="flex flex-wrap justify-center gap-4">
                 @foreach (\App\Models\NewsCategory::all() as $category)
                     <a href="{{ route('news.category', $category->slug) }}" 
-                       class="category-chip bg-red-600 hover:bg-red-700 text-white py-3 px-6 rounded-full font-semibold transition-all">
+                       class="category-chip bg-red-600 hover:bg-red-700 text-white py-3 px-6 rounded-full font-semibold transition-all shadow-md hover:shadow-lg">
                         {{ $category->title }} 
-                        <span class="text-white">({{ $category->news->count() }})</span>
+                        <span class="text-white/90">({{ $category->news->count() }})</span>
                     </a>
                 @endforeach
             </div>
@@ -401,21 +319,18 @@
             <div class="text-center mb-12">
                 <h2 class="section-title text-3xl font-bold text-dark inline-block">Tim Jurnalis Kami</h2>
                 <p class="text-gray-500 mt-3">Kenali penulis-penulis terbaik yang menghasilkan berita berkualitas</p>
-                <a href="#" class="mt-6 bg-red-600 hover:bg-red-700 text-white py-3 px-8 rounded-full font-semibold inline-block transition-all hover:shadow-lg">
-                    Gabung Menjadi Penulis <i class="fas fa-arrow-right ml-2"></i>
-                </a>
             </div>
             
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
                 @foreach ($authors as $author)
                     <a href="{{route('author.show', $author->username)}}" class="author-card bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg text-center p-6">
-                        <div class="author-avatar w-24 h-24 rounded-full overflow-hidden mx-auto mb-4 border-4 border-accent/20">
+                        <div class="author-avatar w-24 h-24 rounded-full overflow-hidden mx-auto mb-4 border-4 border-red-600/20">
                             <img src="{{ asset('storage/' . $author->avatar)}}" alt="{{ $author->name }}" class="w-full h-full object-cover">
                         </div>
                         <h3 class="text-lg font-bold">{{ $author->name }}</h3>
                         <p class="text-gray-500 text-sm mt-1">Author</p>
                         <div class="mt-4 text-sm text-gray-600">
-                            <span class="bg-gray-100  px-3 py-1 rounded-full">{{$author->news->count()}} Berita</span>
+                            <span class="bg-gray-100 px-3 py-1 rounded-full">{{$author->news->count()}} Berita</span>
                         </div>
                     </a>
                 @endforeach

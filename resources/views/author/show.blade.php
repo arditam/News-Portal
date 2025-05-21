@@ -8,6 +8,8 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
     <style>
         .gradient-text {
             background: linear-gradient(90deg, #3b82f6, #ef4444);
@@ -75,7 +77,9 @@
             text-transform: uppercase;
             letter-spacing: 0.5px;
             z-index: 1;
+            font-family: 'Poppins', sans-serif; /* Tambahkan baris ini */
         }
+
         .social-icon {
             transition: all 0.3s ease;
             width: 36px;
@@ -231,7 +235,7 @@
                             {{ Str::limit(strip_tags($item->content), 150) }}
                         </p>
                         <a href="{{ route('news.show', $item->slug) }}" 
-                           class="inline-flex items-center text-blue-600 hover:text-blue-800 font-medium transition-colors text-sm group">
+                           class="inline-flex items-center text-red-600 hover:text-red-800 font-medium transition-colors text-sm group">
                             Baca selengkapnya
                             <i class="fas fa-arrow-right ml-2 text-xs transform group-hover:translate-x-1 transition-transform"></i>
                         </a>

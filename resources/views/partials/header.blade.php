@@ -10,21 +10,21 @@
             </div>
 
             <!-- Desktop Navigation -->
-            <div class="hidden md:flex items-center space-x-1 lg:space-x-6">
+            <div class="hidden md:flex items-center space-x-4 lg:space-x-6">
                 <!-- Navigation Links -->
-                <div class="flex space-x-1 lg:space-x-6">
-                    @foreach (\App\Models\NewsCategory::all() as $category)
-                        <a href="{{ route('news.category', $category->slug) }}" class="px-3 py-2 rounded-md text-sm font-medium text-dark hover:text-accent transition-colors">
+                <div class="flex space-x-4">
+                    @foreach (\App\Models\NewsCategory::take(5)->get() as $category)
+                        <a href="{{ route('news.category', $category->slug) }}" class="px-2 py-2 text-sm font-medium text-dark hover:text-accent transition-colors">
                             {{ $category->title }}
                         </a>
                     @endforeach
                 </div>
                 
                 <!-- Search dan Login -->
-                <div class="hidden lg:flex items-center gap-2 mt-4 lg:mt-0 w-full lg:w-auto relative">
-                    <form action="{{ route('news.search') }}" method="GET" class="relative w-full lg:w-auto">
+                <div class="flex items-center gap-2">
+                    <form action="{{ route('news.search') }}" method="GET" class="relative">
                         <input type="text" name="query" placeholder="Cari berita..."
-                            class="border border-slate-300 rounded-full px-4 py-2 pl-8 w-full text-sm font-normal lg:w-auto focus:outline-none focus:ring-primary focus:border-primary"
+                            class="border border-slate-300 rounded-full px-4 py-2 pl-8 text-sm font-normal w-40 lg:w-48 focus:outline-none focus:ring-primary focus:border-primary"
                             id="searchInput" required />
                         <!-- Icon Search -->
                         <span class="absolute inset-y-0 left-3 flex items-center text-slate-400">
@@ -32,44 +32,44 @@
                         </span>
                     </form>
                     <a href="{{ route('filament.admin.auth.login') }}"
-                        class="bg-red-600 hover:bg-red-700 px-8 py-2 rounded-full text-white font-semibold h-fit text-sm lg:text-base">
+                        class="bg-red-600 hover:bg-red-700 px-4 py-2 rounded-full text-white font-semibold text-sm">
                         Masuk
                     </a>
                 </div>
             </div>
             
             <!-- Mobile menu button -->
-            <div class="md:hidden flex items-center gap-4">
+            <div class="md:hidden flex items-center gap-3">
                 <!-- Search Icon for Mobile -->
-                <button id="mobile-search-toggle" class="p-2 text-gray-700 hover:text-accent focus:outline-none">
-                    <i class="fas fa-search text-xl"></i>
+                <button id="mobile-search-toggle" class="p-1 text-gray-700 hover:text-accent focus:outline-none">
+                    <i class="fas fa-search text-lg"></i>
                 </button>
                 
                 <button 
                     type="button" 
-                    class="p-2 rounded-md text-gray-700 hover:text-accent focus:outline-none"
+                    class="p-1 rounded-md text-gray-700 hover:text-accent focus:outline-none"
                     aria-controls="mobile-menu"
                     aria-expanded="false"
                     id="menu-toggle"
                 >
                     <span class="sr-only">Open main menu</span>
-                    <i class="fas fa-bars text-xl"></i>
+                    <i class="fas fa-bars text-lg"></i>
                 </button>
             </div>
         </nav>
         
         <!-- Mobile Navigation -->
         <div class="md:hidden hidden" id="mobile-menu">
-            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                @foreach (\App\Models\NewsCategory::all() as $category)
-                    <a href="{{ route('news.category', $category->slug) }}" class="block px-3 py-2 rounded-md text-base font-medium text-dark hover:bg-gray-100 hover:text-accent">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                @foreach (\App\Models\NewsCategory::take(5)->get() as $category)
+                    <a href="{{ route('news.category', $category->slug) }}" class="block px-3 py-2 text-sm font-medium text-dark hover:bg-gray-100 hover:text-accent">
                         {{ $category->title }}
                     </a>
                 @endforeach
                 
-                <div class="mt-4 px-3">
+                <div class="mt-2 px-3">
                     <a href="{{ route('filament.admin.auth.login') }}"
-                        class="block w-full text-center bg-red-600 hover:bg-red-700 px-4 py-2 rounded-full text-white font-semibold">
+                        class="block w-full text-center bg-red-600 hover:bg-red-700 px-4 py-2 rounded-full text-white font-semibold text-sm">
                         Masuk
                     </a>
                 </div>
@@ -77,7 +77,7 @@
         </div>
         
         <!-- Mobile Search Bar -->
-        <div class="md:hidden hidden px-3 py-2 bg-white" id="mobile-search">
+        <div class="md:hidden hidden px-2 py-2 bg-white" id="mobile-search">
             <form action="{{ route('news.search') }}" method="GET" class="relative">
                 <input 
                     type="text" 

@@ -52,11 +52,11 @@
                 <ul class="space-y-3 text-gray-400">
                     <li class="flex items-start">
                         <i class="fas fa-map-marker-alt mt-1 mr-3 text-red-500 flex-shrink-0"></i>
-                        <span>Gg. Zaitun Sabrie No. 37, Kota Bengkulu, Indonesia</span>
+                        <span>Gg. Zaitun Sabrie</span>
                     </li>
                     <li class="flex items-center">
                         <i class="fas fa-phone-alt mr-3 text-red-500"></i>
-                        <span>0895-4126-30703</span>
+                        <span>0812-3456-7890</span>
                     </li>
                     <li class="flex items-center">
                         <i class="fas fa-envelope mr-3 text-red-500"></i>
