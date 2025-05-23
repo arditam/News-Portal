@@ -68,8 +68,6 @@ class NewsCategoryResource extends Resource
     {
         return [
             'index' => Pages\ListNewsCategories::route('/'),
-            'create' => Pages\CreateNewsCategory::route('/create'),
-            'edit' => Pages\EditNewsCategory::route('/{record}/edit'),
         ];
     }
 }

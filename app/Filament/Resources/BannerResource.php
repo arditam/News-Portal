@@ -61,8 +61,6 @@ class BannerResource extends Resource
     {
         return [
             'index' => Pages\ListBanners::route('/'),
-            'create' => Pages\CreateBanner::route('/create'),
-            'edit' => Pages\EditBanner::route('/{record}/edit'),
         ];
     }
 }
