@@ -18,10 +18,9 @@ Pastikan sudah terinstal di sistem kamu:
 
 ### 1. Clone project
 ```bash
-git clone https://github.com/arditam/News-Portal.git
-cd News-Portal
+git clone https://github.com/arditam/News-Portal.git && cd News-Portal
 
-### 2. Setup database pada komputer anda, lalu masukkan kredensial-kredensialnya ke file .env.
+### 2 .Setup database pada komputer anda, lalu masukkan kredensial-kredensialnya ke file .env.
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_PORT=3306
@@ -29,3 +28,20 @@ DB_DATABASE=news_portal
 DB_USERNAME=root
 DB_PASSWORD=
 
+### 3. Install dependency
+composer install
+
+### 4. Generate application key 
+php artisan key:generate
+
+### 5. Link storage untuk file upload
+php artisan storage:link
+
+### 6. Migrasi database
+php artisan migrate
+
+### 7. Jalankan aplikasi
+php artisan serve
+
+### 8. Buat akun admin untuk Filament
+php artisan make:filament-user
