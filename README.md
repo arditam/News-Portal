@@ -21,6 +21,7 @@ Pastikan sudah terinstal di sistem kamu:
 git clone https://github.com/arditam/News-Portal.git && cd News-Portal
 
 ### 2 .Setup database pada komputer anda, lalu masukkan kredensial-kredensialnya ke file .env.
+'''bash
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_PORT=3306
@@ -29,6 +30,7 @@ DB_USERNAME=root
 DB_PASSWORD=
 
 ### 3. Install dependency
+'''bash
 composer install
 
 ### 4. Generate application key 
