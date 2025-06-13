@@ -20,7 +20,7 @@ Pastikan sudah terinstal di sistem kamu:
 
 ### 1. Clone project
 ```bash
-git clone https://github.com/arditam/News-Portal.git
+git clone https://github.com/RifqiArdian09/News-Portal.git
 cd News-Portal
 ```
 ### 2. Copy file .env.example
